@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationPeerHelpers", "AutomationPeerHelpers\AutomationPeerHelpers.csproj", "{1DE3F529-8773-49BD-B7C0-403121A3CFBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DE3F529-8773-49BD-B7C0-403121A3CFBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE3F529-8773-49BD-B7C0-403121A3CFBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE3F529-8773-49BD-B7C0-403121A3CFBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE3F529-8773-49BD-B7C0-403121A3CFBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A213FD5-B095-4F58-A0FD-FF793115E9B5}
+	EndGlobalSection
+EndGlobal
