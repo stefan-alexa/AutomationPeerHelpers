@@ -10,24 +10,22 @@ namespace AutomationPeerHelpers
     {
         private const int DefaultSearchDepth = 10;
 
-        public BaseElementAutomationPeer(UIElement owner) : this(owner, DefaultSearchDepth, XamlFramework.WPF)
+        public BaseElementAutomationPeer(
+            UIElement owner, 
+            string className, 
+            AutomationControlType automationControlType = AutomationControlType.Custom,
+            int searchDepth = DefaultSearchDepth,
+            XamlFramework xamlFramework = XamlFramework.WPF) : base(owner)
         {
-        }
-
-        public BaseElementAutomationPeer(UIElement owner, int searchDepth) : this(owner, searchDepth, XamlFramework.WPF)
-        {
-        }
-
-        public BaseElementAutomationPeer(UIElement owner, XamlFramework xamlFramework) : this(owner, DefaultSearchDepth, xamlFramework)
-        {
-
-        }
-
-        public BaseElementAutomationPeer(UIElement owner, int searchDepth, XamlFramework xamlFramework) : base(owner)
-        {
+            this.ClassName = className;
+            this.AutomationControlType = automationControlType;
             this.SearchDepth = searchDepth;
             this.AutomationPeerFactory = AutomationPeerAbstractFactory.Create(xamlFramework);
         }
+        public string ClassName { get; set; }
+
+        public AutomationControlType AutomationControlType { get; set; }
+
 
         public IAutomationPeerFactory AutomationPeerFactory { get; protected set; }
 
