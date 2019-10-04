@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Media;
 
@@ -25,7 +26,6 @@ namespace AutomationPeerHelpers
         public string ClassName { get; set; }
 
         public AutomationControlType AutomationControlType { get; set; }
-
 
         public IAutomationPeerFactory AutomationPeerFactory { get; protected set; }
 
@@ -70,6 +70,32 @@ namespace AutomationPeerHelpers
             }
 
             return automationPeers;
+        }
+
+        protected override string GetClassNameCore()
+        {
+            return ClassName;
+        }
+
+        protected override AutomationControlType GetAutomationControlTypeCore()
+        {
+            return AutomationControlType;
+        }
+
+        protected override string GetAutomationIdCore()
+        {
+            var automationId = AutomationProperties.GetAutomationId(Owner);
+            if (!string.IsNullOrEmpty(automationId))
+            {
+                return automationId;
+            }
+
+            if (Owner is FrameworkElement frameworkElement)
+            {
+                return frameworkElement.Name;
+            }
+
+            return base.GetAutomationIdCore();
         }
     }
 }
