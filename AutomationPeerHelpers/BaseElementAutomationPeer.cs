@@ -14,16 +14,21 @@ namespace AutomationPeerHelpers
         public BaseElementAutomationPeer(
             UIElement owner, 
             string className, 
+            string name = null,
             AutomationControlType automationControlType = AutomationControlType.Custom,
             int searchDepth = DefaultSearchDepth,
             XamlFramework xamlFramework = XamlFramework.WPF) : base(owner)
         {
             this.ClassName = className;
+            this.Name = name;
             this.AutomationControlType = automationControlType;
             this.SearchDepth = searchDepth;
             this.AutomationPeerFactory = AutomationPeerAbstractFactory.Create(xamlFramework);
         }
+
         public string ClassName { get; set; }
+
+        public string Name { get; set; }
 
         public AutomationControlType AutomationControlType { get; set; }
 
@@ -96,6 +101,21 @@ namespace AutomationPeerHelpers
             }
 
             return base.GetAutomationIdCore();
+        }
+
+        protected override string GetNameCore()
+        {
+            if (!string.IsNullOrEmpty(Name))
+            {
+                return Name;
+            }
+
+            if (Owner is FrameworkElement frameworkElement)
+            {
+                return frameworkElement.Name;
+            }
+
+            return base.GetNameCore();
         }
     }
 }
